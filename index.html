@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Bolon Express | Tradición Manabita en Manta</title>
+    <!-- Font Awesome 6 (free icons) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts: modern + warm -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fefaf5;
+            color: #2c2b28;
+            scroll-behavior: smooth;
+        }
+
+        /* colores cálidos: verde naturaleza, amarillo/madera, tonos tierra */
+        :root {
+            --verde-tradicion: #2b6e3c;
+            --verde-suave: #438a5e;
+            --mostaza: #e0a800;
+            --madera: #b47c48;
+            --arena: #f7ede2;
+            --cafe-claro: #d9c5ae;
+            --texto-oscuro: #2c2b28;
+            --sombra: 0 12px 28px rgba(0,0,0,0.05);
+        }
+
+        /* layout base */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* header / nav */
+        .navbar {
+            background: white;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(2px);
+            background-color: rgba(255, 255, 245, 0.96);
+        }
+        .nav-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            flex-wrap: wrap;
+        }
+        .logo h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.7rem;
+            font-weight: 800;
+            color: var(--verde-tradicion);
+            letter-spacing: -0.5px;
+        }
+        .logo span {
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--madera);
+            display: block;
+            line-height: 1.2;
+        }
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .nav-links a {
+            text-decoration: none;
+            font-weight: 600;
+            color: #3e3a34;
+            transition: 0.2s;
+            font-size: 0.95rem;
+        }
+        .nav-links a:hover {
+            color: var(--verde-tradicion);
+        }
+        .whatsapp-nav {
+            background-color: #25D366;
+            padding: 6px 14px;
+            border-radius: 40px;
+            color: white !important;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.85rem;
+        }
+        .whatsapp-nav i {
+            font-size: 1rem;
+        }
+
+        /* botón general */
+        .btn-wa {
+            background-color: #25D366;
+            color: white;
+            border: none;
+            padding: 12px 28px;
+            border-radius: 60px;
+            font-weight: 700;
+            font-size: 1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            transition: 0.2s;
+            text-decoration: none;
+        }
+        .btn-wa:hover {
+            background-color: #1da95c;
+            transform: scale(1.02);
+        }
+
+        /* HERO */
+        .hero {
+            background: linear-gradient(115deg, #fff5e9 0%, #faeedf 100%);
+            padding: 3rem 0 4rem 0;
+            border-bottom: 1px solid #ffeedd;
+        }
+        .hero-grid {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        .hero h2 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            font-family: 'Playfair Display', serif;
+            color: var(--verde-tradicion);
+            line-height: 1.2;
+            max-width: 850px;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            margin: 1rem 0 1.8rem;
+            color: #5c5247;
+            max-width: 600px;
+        }
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--madera);
+            color: var(--madera);
+            padding: 10px 26px;
+            border-radius: 60px;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        /* secciones generales */
+        section {
+            padding: 4rem 0;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            color: #2c2b28;
+        }
+        .section-sub {
+            text-align: center;
+            color: #6b5a4b;
+            margin-bottom: 2.5rem;
+            font-size: 1rem;
+        }
+        /* sobre nosotros cards */
+        .about-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            align-items: center;
+            background: white;
+            border-radius: 2rem;
+            padding: 2rem;
+            box-shadow: var(--sombra);
+        }
+        .about-text {
+            flex: 2;
+        }
+        .about-text p {
+            margin-bottom: 1.2rem;
+            line-height: 1.5;
+            color: #3b352f;
+        }
+        .stats {
+            display: flex;
+            gap: 2rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+        .stat-item {
+            text-align: center;
+        }
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--verde-tradicion);
+        }
+        .about-icons {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+        .feature-card {
+            background: var(--arena);
+            padding: 1rem 1.2rem;
+            border-radius: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .feature-card i {
+            font-size: 2rem;
+            color: var(--madera);
+        }
+
+        /* menú tabs */
+        .menu-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.8rem;
+            margin-bottom: 2.5rem;
+        }
+        .tab-btn {
+            background: #ede3d7;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 40px;
+            font-weight: 600;
+            color: #5a4a3a;
+            cursor: pointer;
+            transition: 0.2s;
+            font-family: 'Inter', sans-serif;
+        }
+        .tab-btn.active {
+            background: var(--verde-tradicion);
+            color: white;
+        }
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 1.8rem;
+        }
+        .menu-card {
+            background: white;
+            border-radius: 1.5rem;
+            padding: 1.2rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            transition: 0.2s;
+            border-left: 6px solid var(--mostaza);
+        }
+        .menu-card h4 {
+            font-size: 1.25rem;
+            font-weight: 800;
+            margin-bottom: 0.4rem;
+        }
+        .menu-card p {
+            color: #7a6a5c;
+            font-size: 0.85rem;
+        }
+        .price-tag {
+            display: inline-block;
+            margin-top: 0.6rem;
+            background: #f1e7df;
+            padding: 4px 12px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        /* reseñas */
+        .reviews-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.8rem;
+            justify-content: center;
+        }
+        .review-card {
+            background: white;
+            border-radius: 1.8rem;
+            padding: 1.8rem;
+            width: 280px;
+            box-shadow: var(--sombra);
+            text-align: center;
+        }
+        .stars {
+            color: #f5b042;
+            font-size: 1.2rem;
+            margin: 0.6rem 0;
+        }
+        .review-text {
+            font-style: italic;
+            font-weight: 500;
+            margin: 0.8rem 0;
+        }
+        .review-name {
+            font-weight: 700;
+            color: var(--verde-tradicion);
+        }
+
+        /* contacto */
+        .contact-grid {
+            display: flex;
+            flex-wrap: wrap;
+            background: #e7d9ce;
+            border-radius: 2rem;
+            overflow: hidden;
+        }
+        .contact-info {
+            flex: 1;
+            padding: 2rem;
+            background: #fffaf5;
+        }
+        .contact-info i {
+            color: var(--verde-tradicion);
+            width: 32px;
+            margin-right: 12px;
+        }
+        .contact-detail {
+            margin: 1rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+        }
+        .contact-map {
+            flex: 1;
+            background: #cbbfae;
+            min-height: 250px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #2e2a25;
+        }
+
+        footer {
+            background: #2b2a27;
+            color: #ddd2c4;
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 700px) {
+            .nav-flex {
+                flex-direction: column;
+                gap: 0.8rem;
+            }
+            .hero h2 {
+                font-size: 2rem;
+            }
+            .section-title {
+                font-size: 1.8rem;
+            }
+            .about-grid {
+                flex-direction: column;
+            }
+        }
+        .hidden-tab {
+            display: none;
+        }
+        .whatsapp-fixed {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #25D366;
+            border-radius: 50px;
+            padding: 12px 18px;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.2);
+            z-index: 99;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+        }
+        @media (max-width: 500px) {
+            .whatsapp-fixed span {
+                display: none;
+            }
+            .whatsapp-fixed {
+                padding: 12px;
+                border-radius: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<div class="navbar">
+    <div class="container">
+        <div class="nav-flex">
+            <div class="logo">
+                <h1>Bolon Express</h1>
+                <span>Tradición manabita</span>
+            </div>
+            <div class="nav-links">
+                <a href="#inicio">Inicio</a>
+                <a href="#nosotros">Nosotros</a>
+                <a href="#menu">Menú</a>
+                <a href="#reseñas">Reseñas</a>
+                <a href="#contacto">Contacto</a>
+                <a href="https://wa.me/593996507171?text=¡Hola!%20Quiero%20ordenar%20de%20Bolon%20Express" class="whatsapp-nav" target="_blank"><i class="fab fa-whatsapp"></i> Pedir</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- HERO section -->
+<section id="inicio" class="hero">
+    <div class="container hero-grid">
+        <h2>El verdadero sabor manabita en cada bocado</h2>
+        <p>Disfruta los mejores bolones, tigrillos y desayunos en Manta. Preparados con ingredientes frescos y la receta original de la costa ecuatoriana.</p>
+        <div class="hero-buttons">
+            <a href="https://wa.me/593996507171?text=Hola%20Bolon%20Express,%20quiero%20hacer%20un%20pedido!" class="btn-wa" target="_blank"><i class="fab fa-whatsapp"></i> Ordenar por WhatsApp</a>
+            <a href="#menu" class="btn-outline">Ver Menú →</a>
+        </div>
+    </div>
+</section>
+
+<!-- SOBRE NOSOTROS -->
+<section id="nosotros">
+    <div class="container">
+        <h2 class="section-title">Sobre Nosotros</h2>
+        <div class="about-grid">
+            <div class="about-text">
+                <h3 style="font-size:1.8rem; font-weight:700; margin-bottom:1rem;">Nuestra Historia</h3>
+                <p>Bolon Express nace de la pasión por la gastronomía ecuatoriana, específicamente el inigualable sabor de la provincia de Manabí. Somos un restaurante tradicional manabita especializado en bolones de verde, tigrillos y desayunos típicos ecuatorianos. Ofrecemos comida deliciosa, económica y con el auténtico sabor de la costa.</p>
+                <p>Cada plato es preparado en el momento, garantizando esa frescura y textura crujiente que hace a un buen bolón inolvidable. Atención cálida que te hace sentir en casa.</p>
+                <div class="stats">
+                    <div class="stat-item"><div class="stat-number">100%</div><div>Verde Manabita</div></div>
+                    <div class="stat-item"><div class="stat-number">+5</div><div>Años de Tradición</div></div>
+                </div>
+            </div>
+            <div class="about-icons">
+                <div class="feature-card"><i class="fas fa-utensils"></i> <span>Sabor Auténtico: recetas de generación</span></div>
+                <div class="feature-card"><i class="fas fa-map-marker-alt"></i> <span>Av. 4 de Noviembre, Manta</span></div>
+                <div class="feature-card"><i class="fas fa-smile"></i> <span>Atención cercana y familiar</span></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- MENÚ -->
+<section id="menu" style="background: #fcf6ef;">
+    <div class="container">
+        <h2 class="section-title">Nuestro Menú</h2>
+        <p class="section-sub">Sabores que enamoran, preparados al instante</p>
+
+        <div class="menu-tabs">
+            <button class="tab-btn active" data-category="desayunos">Desayunos</button>
+            <button class="tab-btn" data-category="bolones">Bolones</button>
+            <button class="tab-btn" data-category="tigrillos">Tigrillos</button>
+            <button class="tab-btn" data-category="especialidades">Especialidades</button>
+            <button class="tab-btn" data-category="bebidas">Bebidas</button>
+        </div>
+
+        <!-- Contenedor menú dinámico -->
+        <div id="menu-container" class="menu-grid"></div>
+    </div>
+</section>
+
+<!-- RESEÑAS -->
+<section id="reseñas">
+    <div class="container">
+        <h2 class="section-title">Testimonios</h2>
+        <p class="section-sub">Lo que dicen nuestros clientes</p>
+        <div class="reviews-grid">
+            <div class="review-card">
+                <div class="stars">★★★★★</div>
+                <div class="review-text">"Los bolones y tigrillos son deliciosos y tienen historia"</div>
+                <div class="review-name">Carlos M.</div>
+                <div style="font-size:0.75rem;">Cliente verificado</div>
+            </div>
+            <div class="review-card">
+                <div class="stars">★★★★★</div>
+                <div class="review-text">"Excelente lugar, comida muy rica"</div>
+                <div class="review-name">Andrea V.</div>
+                <div style="font-size:0.75rem;">Cliente verificado</div>
+            </div>
+            <div class="review-card">
+                <div class="stars">★★★★★</div>
+                <div class="review-text">"Recomendado para desayunos"</div>
+                <div class="review-name">Luis F.</div>
+                <div style="font-size:0.75rem;">Cliente verificado</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CONTACTO + UBICACIÓN -->
+<section id="contacto">
+    <div class="container">
+        <h2 class="section-title">Visítanos</h2>
+        <div class="contact-grid">
+            <div class="contact-info">
+                <h3 style="margin-bottom:1.2rem;">¡Estamos en Manta!</h3>
+                <div class="contact-detail"><i class="fas fa-location-dot fa-lg"></i> Av. 4 de Noviembre, Manta, Ecuador</div>
+                <div class="contact-detail"><i class="fas fa-phone-alt"></i> 099 650 7171</div>
+                <div class="contact-detail"><i class="far fa-clock"></i> Todos los días | Desayunos desde temprano</div>
+                <a href="https://wa.me/593996507171?text=Quisiera%20información%20o%20hacer%20un%20pedido" class="btn-wa" style="margin-top:1.5rem; display:inline-flex;" target="_blank"><i class="fab fa-whatsapp"></i> Escribir por WhatsApp</a>
+            </div>
+            <div class="contact-map">
+                <i class="fas fa-map-marked-alt" style="font-size: 3rem; margin-bottom: 0.5rem; color:#5f4c3b;"></i>
+                <p><strong>📍 Av. 4 de Noviembre, Manta</strong><br>Frente al parque central / referencia fácil</p>
+                <small>¡Ven y disfruta el mejor bolón!</small>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <p>Bolon Express – Tradición Manabita – Sabor que conquista • Manta, Ecuador</p>
+    <p style="margin-top: 0.5rem;">© 2025 Bolon Express | Hecho con 💚 para los amantes del verde</p>
+</footer>
+
+<!-- Botón flotante WhatsApp -->
+<a href="https://wa.me/593996507171?text=Hola%20Bolon%20Express,%20me%20encantaría%20ordenar" class="whatsapp-fixed" target="_blank">
+    <i class="fab fa-whatsapp fa-lg"></i> <span>Pedir ahora</span>
+</a>
+
+<script>
+    // Datos del menú completo según estructura solicitada
+    const menuData = {
+        desayunos: [
+            { name: "Montubio Express", desc: "Desayuno típico montubio con huevo, queso, verde y café" },
+            { name: "Continental Express", desc: "Pan, mermelada, mantequilla, jugo de naranja y café" },
+            { name: "Americano Express", desc: "Huevos revueltos, tostadas, papas doradas y café" }
+        ],
+        bolones: [
+            { name: "Bolón mixto", desc: "Verde con queso y chicharrón" },
+            { name: "Bolón de queso", desc: "Tradicional relleno de queso fresco" },
+            { name: "Bolón con chicharrón", desc: "Crujiente chicharrón y verde" },
+            { name: "Bolón de longaniza", desc: "Longaniza manabita artesanal" },
+            { name: "Bolón de camarón", desc: "Camarones salteados" },
+            { name: "Bolón de cangrejo", desc: "Sabor costeño con cangrejo" },
+            { name: "Bolón marino", desc: "Mixtura de mariscos (camarón, cangrejo, pescado)" }
+        ],
+        tigrillos: [
+            { name: "Tigrillo doble queso", desc: "Tigrillo de verde con queso derretido" },
+            { name: "Tigrillo mar y tierra", desc: "Verde, chicharrón y camarón" },
+            { name: "Tigrillo con longaniza", desc: "Longaniza ahumada y huevo" }
+        ],
+        especialidades: [
+            { name: "Bistec montubio", desc: "Carne en su jugo con vegetales y arroz" },
+            { name: "Arroz perico", desc: "Arroz frito con huevo, maduro y carne" },
+            { name: "Chicharrones", desc: "Porción extra de chicharrones crujientes" },
+            { name: "Tortilla campestre", desc: "Tortilla de verde o yuca" }
+        ],
+        bebidas: [
+            { name: "Jugos naturales", desc: "De piña, naranjilla, mora, maracuyá (del día)" },
+            { name: "Café", desc: "Café de especialidad ecuatoriano" }
+        ]
+    };
+
+    // referencias
+    const menuContainer = document.getElementById('menu-container');
+    const tabBtns = document.querySelectorAll('.tab-btn');
+
+    function renderMenu(category) {
+        const items = menuData[category];
+        if (!items) return;
+        let html = '';
+        items.forEach(item => {
+            html += `
+                <div class="menu-card">
+                    <h4>${item.name}</h4>
+                    <p>${item.desc}</p>
+                    <div class="price-tag">Precio económico | Sabor casero</div>
+                </div>
+            `;
+        });
+        menuContainer.innerHTML = html;
+    }
+
+    // evento tabs
+    tabBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            tabBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            const cat = btn.getAttribute('data-category');
+            renderMenu(cat);
+        });
+    });
+
+    // cargar desayunos por defecto
+    renderMenu('desayunos');
+
+    // smooth scroll para links internos
+    document.querySelectorAll('.nav-links a, .hero-buttons .btn-outline').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const href = this.getAttribute('href');
+            if (href && href.startsWith('#')) {
+                e.preventDefault();
+                const target = document.querySelector(href);
+                if(target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            }
+        });
+    });
+    // También agregar botón "Ver Menú" del hero (btn-outline ya tiene hash #menu)
+    // Ajuste adicional: el botón "Ver Menú" tiene clase btn-outline y href="#menu"
+    const verMenuBtn = document.querySelector('.hero-buttons .btn-outline');
+    if(verMenuBtn) {
+        verMenuBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const menuSection = document.getElementById('menu');
+            if(menuSection) menuSection.scrollIntoView({ behavior: 'smooth' });
+        });
+    }
+
+    // mejor precarga de íconos
+</script>
+</body>
+</html>
